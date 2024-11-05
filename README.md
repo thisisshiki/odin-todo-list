@@ -1,2 +1,4 @@
 # odin-todo-list
-odin-todo-list
+Project detail: https://www.theodinproject.com/lessons/node-path-javascript-todo-list
+
+Live preview: https://thisisshiki.github.io/odin-todo-list
