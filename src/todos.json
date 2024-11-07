@@ -1,0 +1,83 @@
+[
+  {
+    "id": 1,
+    "title": "Finish report",
+    "description": "Complete the quarterly report",
+    "dueDate": "2023-10-01",
+    "priority": "high",
+    "notes": "Include all recent data",
+    "category": "work"
+  },
+  {
+    "id": 2,
+    "title": "Team meeting",
+    "description": "Discuss project progress",
+    "dueDate": "2023-10-05",
+    "priority": "medium",
+    "notes": "Prepare slides",
+    "category": "work"
+  },
+  {
+    "id": 3,
+    "title": "Client call",
+    "description": "Call with client to discuss requirements",
+    "dueDate": "2023-10-10",
+    "priority": "high",
+    "notes": "Send agenda beforehand",
+    "category": "work"
+  },
+  {
+    "id": 4,
+    "title": "Read chapter 4",
+    "description": "Read chapter 4 of the textbook",
+    "dueDate": "2023-10-02",
+    "priority": "medium",
+    "notes": "Take notes",
+    "category": "study"
+  },
+  {
+    "id": 5,
+    "title": "Complete assignment",
+    "description": "Finish the math assignment",
+    "dueDate": "2023-10-06",
+    "priority": "high",
+    "notes": "Submit online",
+    "category": "study"
+  },
+  {
+    "id": 6,
+    "title": "Study group",
+    "description": "Meet with study group",
+    "dueDate": "2023-10-08",
+    "priority": "low",
+    "notes": "Review notes",
+    "category": "study"
+  },
+  {
+    "id": 7,
+    "title": "Grocery shopping",
+    "description": "Buy groceries for the week",
+    "dueDate": "2023-10-03",
+    "priority": "low",
+    "notes": "Check pantry first",
+    "category": "personal"
+  },
+  {
+    "id": 8,
+    "title": "Gym",
+    "description": "Go to the gym",
+    "dueDate": "2023-10-04",
+    "priority": "medium",
+    "notes": "Leg day",
+    "category": "personal"
+  },
+  {
+    "id": 9,
+    "title": "Call mom",
+    "description": "Catch up with mom",
+    "dueDate": "2023-10-07",
+    "priority": "high",
+    "notes": "Ask about her trip",
+    "category": "personal"
+  }
+]
