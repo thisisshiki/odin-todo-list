@@ -12,7 +12,8 @@
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write .",
     "clean": "rm -rf dist",
-    "serve": "webpack serve --config webpack.dev.js"
+    "serve": "webpack serve --config webpack.dev.js",
+    "deploy": "git add dist -f && git commit -m \"Deployment commit\" && git subtree push --prefix dist origin gh-pages && git checkout main"
   },
   "keywords": [],
   "author": "",

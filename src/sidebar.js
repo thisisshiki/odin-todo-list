@@ -6,8 +6,8 @@ export function createSidebar() {
   // Sidebar structure
   sidebar.innerHTML = `
       <div class="sidebar-header">
-          <button class="toggle-btn">☰</button>
-          <button class="add-btn">+</button>
+          <button class="toggle-btn"><i class="fas fa-bars"></i></button>
+          <button class="settings-btn"><i class="fas fa-cog"></i></button>
       </div>
       
       <div class="sidebar-content">
@@ -24,9 +24,9 @@ export function createSidebar() {
                   <span>Timeline</span>
               </div>
               <div class="dropdown-content">
-                  <div class="menu-item"><i class="fas fa-today"></i>Today</div>
-                  <div class="menu-item"><i class="fas fa-week"></i>This Week</div>
-                  <div class="menu-item"><i class="fas fa-month"></i>This Month</div>
+                  <div class="menu-item"><i class="fa-solid fa-calendar-day"></i>Today</div>
+                  <div class="menu-item"><i class="fa-solid fa-calendar-week"></i>This Week</div>
+                  <div class="menu-item"><i class="fa-solid fa-calendar-days"></i>This Month</div>
               </div>
           </div>
 
@@ -38,12 +38,19 @@ export function createSidebar() {
               <div class="dropdown-content">
                   <div class="menu-item"><i class="fas fa-briefcase"></i>Work</div>
                   <div class="menu-item"><i class="fas fa-book"></i>Study</div>
-                  <div class="menu-item"><i class="fas fa-user"></i>Personal</div>
+                  <div class="menu-item"><i class="fas fa-person"></i>Personal</div>
                   <div class="menu-item add-category">
                       <i class="fas fa-plus"></i>Add Category
                   </div>
               </div>
           </div>
+      </div>
+
+      <div class="sidebar-footer">
+          <button class="add-todo-btn">
+              <i class="fas fa-plus"></i>
+              <span>Add New Todo</span>
+          </button>
       </div>
   `;
 
@@ -61,7 +68,7 @@ export function createSidebar() {
       
       if (header && content) {
           header.addEventListener('click', () => {
-              dropdown.classList.toggle('active');
+              dropdown.classList.toggle('inactive');
           });
       }
   });

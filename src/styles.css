@@ -1,4 +1,3 @@
-/* styles.css */
 body {
   margin: 0;
   padding: 0;
@@ -43,12 +42,11 @@ body {
 }
 
 .dropdown-content {
-  display: none;
   padding-left: 20px;
 }
 
-.dropdown.active .dropdown-content {
-  display: block;
+.dropdown.inactive .dropdown-content {  
+  display: none;
 }
 
 .menu-item {
@@ -66,10 +64,34 @@ body {
   background: #e0e0e0;
 }
 
-.sidebar.collapsed .dropdown-content,
-.sidebar.collapsed .dropdown-header span {
-  display: none;
+.sidebar-footer {
+    padding: 1rem;
+    border-top: 1px solid #ddd;
+    margin-top: auto;
 }
+
+.add-todo-btn {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    background: #e2e2e2;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.add-todo-btn:hover {
+    color: white;
+    background: #a1a1a1;
+}
+
+.sidebar.collapsed .sidebar-content,
+.sidebar.collapsed .sidebar-footer {
+    display: none;
+}
+
 
 /* Responsive Design */
 @media screen and (max-width: 1024px) {
@@ -94,12 +116,4 @@ body {
       z-index: 100;
       transform: translateX(-100%);
   }
-
-  .sidebar.active {
-      transform: translateX(0);
-  }
-
-  .main {
-    grid-column: 1;
-}
 }
