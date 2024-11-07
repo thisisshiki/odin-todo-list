@@ -7,4 +7,10 @@ module.exports = merge(common, {
   devServer: {
     contentBase: './dist',
   },
+  devServer: {
+    watchFiles: ['./src/index.html'], // Use single quotes
+    hot: true, // Add hot module replacement
+    open: true, // Auto-open browser
+    port: 8080 // Specify port explicitly
+  }
 });
