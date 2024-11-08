@@ -209,3 +209,7 @@ li input[type="checkbox"] {
     transform: translateX(-100%);
   }
 }
+
+.timeline-section {
+  display: none;
+}
