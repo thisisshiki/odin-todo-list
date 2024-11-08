@@ -16,11 +16,15 @@ function loadTodosFromLocalStorage() {
     return savedTodos ? JSON.parse(savedTodos) : todos;
 }
 
-export function loadTodos(parentElement) {
-    initializeTodosInLocalStorage(); // 初始化 localStorage 中的 todos
+export function loadTodos(parentElement, category = null) {
+    initializeTodosInLocalStorage();
 
     const ul = document.createElement('ul');
-    const todos = loadTodosFromLocalStorage();
+    let todos = loadTodosFromLocalStorage();
+
+    if (category) {
+        todos = todos.filter(todo => todo.category === category);
+    }
 
     todos.forEach(todo => {
         const li = document.createElement('li');
@@ -32,9 +36,8 @@ export function loadTodos(parentElement) {
 
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
-        checkbox.checked = todo.isCompleted; // 设置复选框的初始状态
+        checkbox.checked = todo.isCompleted;
 
-        // 根据 isCompleted 属性设置条目的样式
         if (todo.isCompleted) {
             li.classList.add('completed');
         }
@@ -42,13 +45,12 @@ export function loadTodos(parentElement) {
         checkbox.addEventListener('change', () => {
             if (checkbox.checked) {
                 li.classList.add('completed');
-                todo.isCompleted = true; // 更新 JSON 中的 isCompleted 状态
+                todo.isCompleted = true;
             } else {
                 li.classList.remove('completed');
-                todo.isCompleted = false; // 更新 JSON 中的 isCompleted 状态
+                todo.isCompleted = false;
             }
 
-            // 保存更新后的 todos 到 localStorage
             saveTodosToLocalStorage(todos);
         });
 
@@ -66,5 +68,15 @@ export function loadTodos(parentElement) {
         ul.appendChild(li);
     });
 
-    parentElement.appendChild(ul);
+    let ulElement = parentElement.querySelector('ul');
+    if (ulElement) {
+        ulElement.replaceWith(ul);
+    } else {
+        parentElement.appendChild(ul);
+    }
+}
+
+export function filterTodosByCategory(category) {
+    const main = document.getElementById('main');
+    loadTodos(main, category);
 }

@@ -1,5 +1,4 @@
 /* Reset CSS */
-
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -112,16 +111,25 @@ body {
 }
 
 header {
+  display: flex;
+  align-items: center;
   padding: 10px;
   border-radius: 4px;
 }
 
 header h1 {
   margin: 0;
+  margin-left: 10px;
+}
+
+.title-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
 }
 
 ul {
-  list-style-type: none; /* 去掉 bullet point */
+  list-style-type: none;
   padding: 0;
 }
 

@@ -1,7 +1,7 @@
 import './styles.css';
 import { createSidebar } from './sidebar';
 import { loadTodos } from './loadTodos';
-import { addTitle } from './addTitle'; // 导入 addPageTitle 函数
+import { addTitle } from './addTitle';
 
 document.addEventListener('DOMContentLoaded', () => {
     const sidebar = createSidebar();
@@ -11,6 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
     main.id = 'main';
     document.body.appendChild(main);
 
-    addTitle('Todo List', main);
+    addTitle('My Todo', main);
     loadTodos(main);
 });
