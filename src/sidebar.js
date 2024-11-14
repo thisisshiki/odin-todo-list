@@ -1,16 +1,13 @@
-import { filterTodosByCategory } from './loadTodos';
+import { filterTodosByCategory } from './filterTodosByCategory';
 
 export function createSidebar() {
     const sidebar = document.createElement('div');
     sidebar.classList.add('sidebar');
-  
-    // Sidebar structure
     sidebar.innerHTML = `
         <div class="sidebar-header">
             <button class="toggle-btn"><i class="fas fa-bars"></i></button>
             <button class="settings-btn"><i class="fas fa-cog"></i></button>
         </div>
-        
         <div class="sidebar-content">
             <div class="user-section dropdown">
                 <div class="dropdown-header">
@@ -18,7 +15,6 @@ export function createSidebar() {
                     <span>Username</span>
                 </div>
             </div>
-
             <div class="timeline-section dropdown">
                 <div class="dropdown-header">
                     <i class="fas fa-calendar"></i>
@@ -30,7 +26,6 @@ export function createSidebar() {
                     <div class="menu-item"><i class="fa-solid fa-calendar-days"></i>This Month</div>
                 </div>
             </div>
-
             <div class="categories-section dropdown">
                 <div class="dropdown-header">
                     <i class="fas fa-tags"></i>
@@ -47,7 +42,6 @@ export function createSidebar() {
                 </div>
             </div>
         </div>
-
         <div class="sidebar-footer">
             <button class="add-todo-btn">
                 <i class="fas fa-plus"></i>
@@ -77,17 +71,14 @@ export function createSidebar() {
 
     // Add event listeners for category filtering
     sidebar.querySelector('.menu-item.all').addEventListener('click', () => {
-        filterTodosByCategory(null); // 显示所有待办事项
+        filterTodosByCategory(null);
     });
-
     sidebar.querySelector('.menu-item.work').addEventListener('click', () => {
         filterTodosByCategory('work');
     });
-
     sidebar.querySelector('.menu-item.study').addEventListener('click', () => {
         filterTodosByCategory('study');
     });
-
     sidebar.querySelector('.menu-item.personal').addEventListener('click', () => {
         filterTodosByCategory('personal');
     });

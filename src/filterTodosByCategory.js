@@ -1,28 +1,14 @@
-import todos from './todos.json';
+import { loadTodosFromLocalStorage } from './loadTodos';
 import { format, parseISO } from 'date-fns';
 
-function initializeTodosInLocalStorage() {
-    if (!localStorage.getItem('todos')) {
-        localStorage.setItem('todos', JSON.stringify(todos));
-    }
-}
-
-function saveTodosToLocalStorage(todos) {
-    localStorage.setItem('todos', JSON.stringify(todos));
-}
-
-function loadTodosFromLocalStorage() {
-    const savedTodos = localStorage.getItem('todos');
-    return savedTodos ? JSON.parse(savedTodos) : todos;
-}
-
-export function loadTodos(parentElement) {
-    initializeTodosInLocalStorage();
-
-    const ul = document.createElement('ul');
+export function filterTodosByCategory(category) {
+    const main = document.getElementById('main');
     const todos = loadTodosFromLocalStorage();
 
-    todos.forEach(todo => {
+    const filteredTodos = category ? todos.filter(todo => todo.category === category) : todos;
+
+    const ul = document.createElement('ul');
+    filteredTodos.forEach(todo => {
         const li = document.createElement('li');
         const formattedDate = format(parseISO(todo.dueDate), 'yyyy-MM-dd');
         
@@ -64,12 +50,10 @@ export function loadTodos(parentElement) {
         ul.appendChild(li);
     });
 
-    let ulElement = parentElement.querySelector('ul');
+    let ulElement = main.querySelector('ul');
     if (ulElement) {
         ulElement.replaceWith(ul);
     } else {
-        parentElement.appendChild(ul);
+        main.appendChild(ul);
     }
 }
-
-export { loadTodosFromLocalStorage, saveTodosToLocalStorage };
