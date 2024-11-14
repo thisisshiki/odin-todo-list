@@ -24,6 +24,7 @@ export function loadTodos(parentElement) {
 
     todos.forEach(todo => {
         const li = document.createElement('li');
+        li.dataset.todoId = todo.id;
         const formattedDate = format(parseISO(todo.dueDate), 'yyyy-MM-dd');
         
         const dateSpan = document.createElement('span');
