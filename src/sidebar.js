@@ -1,4 +1,5 @@
 import { filterTodosByCategory } from './filterTodosByCategory';
+import { filterTodosByTime } from './filterTodosByTime';
 
 export function createSidebar() {
     const sidebar = document.createElement('div');
@@ -15,15 +16,18 @@ export function createSidebar() {
                     <span>Username</span>
                 </div>
             </div>
+            <div class="all-todos-section">
+                <div class="menu-item all"><i class="fas fa-list"></i>All Todos</div>
+            </div>
             <div class="timeline-section dropdown">
                 <div class="dropdown-header">
                     <i class="fas fa-calendar"></i>
                     <span>Timeline</span>
                 </div>
                 <div class="dropdown-content">
-                    <div class="menu-item"><i class="fa-solid fa-calendar-day"></i>Today</div>
-                    <div class="menu-item"><i class="fa-solid fa-calendar-week"></i>This Week</div>
-                    <div class="menu-item"><i class="fa-solid fa-calendar-days"></i>This Month</div>
+                    <div class="menu-item" data-time="today"><i class="fa-solid fa-calendar-day"></i>Today</div>
+                    <div class="menu-item" data-time="thisWeek"><i class="fa-solid fa-calendar-week"></i>This Week</div>
+                    <div class="menu-item" data-time="thisMonth"><i class="fa-solid fa-calendar-days"></i>This Month</div>
                 </div>
             </div>
             <div class="categories-section dropdown">
@@ -32,7 +36,6 @@ export function createSidebar() {
                     <span>Categories</span>
                 </div>
                 <div class="dropdown-content">
-                    <div class="menu-item all"><i class="fas fa-list"></i>All</div>
                     <div class="menu-item work"><i class="fas fa-briefcase"></i>Work</div>
                     <div class="menu-item study"><i class="fas fa-book"></i>Study</div>
                     <div class="menu-item personal"><i class="fas fa-person"></i>Personal</div>
@@ -69,10 +72,12 @@ export function createSidebar() {
         }
     });
 
-    // Add event listeners for category filtering
+    // Add event listener for "All Todos"
     sidebar.querySelector('.menu-item.all').addEventListener('click', () => {
-        filterTodosByCategory(null);
+        filterTodosByCategory(null); // 显示所有待办事项
     });
+
+    // Add event listeners for category filtering
     sidebar.querySelector('.menu-item.work').addEventListener('click', () => {
         filterTodosByCategory('work');
     });
@@ -81,6 +86,17 @@ export function createSidebar() {
     });
     sidebar.querySelector('.menu-item.personal').addEventListener('click', () => {
         filterTodosByCategory('personal');
+    });
+
+    // Add event listeners for time filtering
+    sidebar.querySelector('.menu-item[data-time="today"]').addEventListener('click', () => {
+        filterTodosByTime('today');
+    });
+    sidebar.querySelector('.menu-item[data-time="thisWeek"]').addEventListener('click', () => {
+        filterTodosByTime('thisWeek');
+    });
+    sidebar.querySelector('.menu-item[data-time="thisMonth"]').addEventListener('click', () => {
+        filterTodosByTime('thisMonth');
     });
 
     return sidebar;

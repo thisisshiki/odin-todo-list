@@ -278,6 +278,6 @@ li input[type="checkbox"] {
 }
 
 /* To be done */
-.timeline-section, .add-category {
+.add-category {
   display: none;
 }
