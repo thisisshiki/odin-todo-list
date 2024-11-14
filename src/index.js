@@ -25,3 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+document.addEventListener('todosUpdated', () => {
+    loadTodos(document.getElementById('main'));
+});

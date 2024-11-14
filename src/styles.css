@@ -190,7 +190,7 @@ li input[type="checkbox"] {
   background-color: #66cc66;
 }
 
-/* todo modal */
+/* Todo Modal */
 .modal {
     display: none;
     position: fixed;
@@ -227,6 +227,59 @@ li input[type="checkbox"] {
 
 .todo-details p {
     margin: 10px 0;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.edit-btn, .save-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-btn {
+    background: #4CAF50;
+    color: white;
+}
+
+.save-btn {
+    background: #2196F3;
+    color: white;
+}
+
+.delete-btn {
+  background: #dc3545;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background: #c82333;
+}
+
+[contenteditable="true"] {
+    border-bottom: 1px dashed #999;
+    padding: 2px;
+}
+
+.todo-details select, .todo-details input {
+    margin-left: 5px;
+    padding: 2px;
 }
 
 
