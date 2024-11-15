@@ -45,7 +45,7 @@ export function createSidebar() {
                 </div>
             </div>
         </div>
-        <div class="sidebar-footer">
+        <div class="c">
             <button class="add-todo-btn">
                 <i class="fas fa-plus"></i>
                 <span>Add New Todo</span>

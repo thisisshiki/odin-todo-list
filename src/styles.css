@@ -20,7 +20,7 @@ body {
 }
 
 .sidebar.collapsed {
-  width: 100px;
+  /* width: 100px; */
 }
 
 .sidebar-header {
@@ -309,6 +309,6 @@ li input[type="checkbox"] {
 }
 
 /* To be done */
-.add-category {
+.add-category, .add-todo-btn {
   display: none;
 }
