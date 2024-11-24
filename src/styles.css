@@ -17,6 +17,11 @@ body {
 .sidebar {
   background: #e6e5e1;
   transition: width 0.3s ease;
+  height: 100vh;
+  overflow-y: auto;
+  position: sticky;
+  top: 0;
+  left: 0;
 }
 
 /* .sidebar.collapsed {
@@ -311,4 +316,9 @@ li input[type="checkbox"] {
 /* To be done */
 .add-category {
   display: none;
+}
+
+.placeholder-text {
+  color: #999;
+  font-style: italic;
 }

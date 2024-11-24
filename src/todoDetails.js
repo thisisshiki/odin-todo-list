@@ -1,4 +1,5 @@
 import { loadTodosFromLocalStorage, saveTodosToLocalStorage } from './loadTodos';
+import { Todo } from './todo';
 
 export function showTodoDetails(todoId) {
     const todos = loadTodosFromLocalStorage();
@@ -15,6 +16,57 @@ export function showTodoDetails(todoId) {
     }
     
     populateModal(modal, todo);
+    modal.style.display = 'block';
+}
+
+export function showNewTodoModal() {
+    let modal = document.getElementById('todo-modal');
+    if (!modal) {
+        modal = createModal();
+    }
+    
+    const newTodo = new Todo(
+        Date.now(),
+        'Enter title here...',
+        'Describe your task here...',
+        new Date().toISOString().split('T')[0],
+        'low',
+        'Add any additional notes here...',
+        'personal',
+        false
+    );
+    
+    populateModal(modal, newTodo);
+    enableEditing(modal);
+    
+    // Handle placeholder text styling
+    const editableElements = modal.querySelectorAll('[contenteditable="true"]');
+    editableElements.forEach(element => {
+        element.classList.add('placeholder-text');
+        
+        element.addEventListener('focus', function() {
+            if (element.textContent.includes('here...')) {
+                element.textContent = '';
+                element.classList.remove('placeholder-text');
+            }
+        });
+        
+        element.addEventListener('blur', function() {
+            if (!element.textContent.trim()) {
+                element.textContent = element.getAttribute('data-placeholder') || 'Enter text here...';
+                element.classList.add('placeholder-text');
+            }
+        });
+    });
+    
+    // Set placeholder text attributes
+    modal.querySelector('.todo-title').setAttribute('data-placeholder', 'Enter title here...');
+    modal.querySelector('.todo-description').setAttribute('data-placeholder', 'Describe your task here...');
+    modal.querySelector('.todo-notes').setAttribute('data-placeholder', 'Add any additional notes here...');
+    
+    modal.querySelector('.edit-btn').style.display = 'none';
+    modal.querySelector('.delete-btn').style.display = 'none';
+    modal.querySelector('.save-btn').style.display = 'inline-block';
     modal.style.display = 'block';
 }
 
@@ -70,7 +122,6 @@ function createModal() {
     deleteBtn.onclick = () => deleteTodo(modal);
     saveBtn.onclick = () => saveChanges(modal);
 
-    // Close on outside click
     window.onclick = (event) => {
         if (event.target === modal) {
             modal.style.display = 'none';
@@ -78,7 +129,6 @@ function createModal() {
         }
     };
 
-    // Add keyboard shortcuts
     modal.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             modal.style.display = 'none';
@@ -137,23 +187,42 @@ function deleteTodo(modal) {
 function saveChanges(modal) {
     try {
         const todos = loadTodosFromLocalStorage();
-        const todoId = modal.dataset.todoId;
-        const todo = todos.find(t => t.id === Number(todoId));
+        const todoId = Number(modal.dataset.todoId);
+        let todo = todos.find(t => t.id === todoId);
         
-        if (todo) {
-            todo.title = modal.querySelector('.todo-title').textContent.trim();
-            todo.description = modal.querySelector('.todo-description').textContent.trim();
-            todo.dueDate = modal.querySelector('.todo-date').value;
-            todo.priority = modal.querySelector('.todo-priority').value;
-            todo.category = modal.querySelector('.todo-category').value;
-            todo.notes = modal.querySelector('.todo-notes').textContent.trim();
-            
-            saveTodosToLocalStorage(todos);
-            resetEditMode(modal);
-            
-            const event = new CustomEvent('todosUpdated');
-            document.dispatchEvent(event);
+        const updatedData = {
+            title: modal.querySelector('.todo-title').textContent.trim(),
+            description: modal.querySelector('.todo-description').textContent.trim(),
+            dueDate: modal.querySelector('.todo-date').value,
+            priority: modal.querySelector('.todo-priority').value,
+            category: modal.querySelector('.todo-category').value,
+            notes: modal.querySelector('.todo-notes').textContent.trim()
+        };
+
+        if (!todo) {
+            // This is a new todo
+            todo = new Todo(
+                todoId,
+                updatedData.title,
+                updatedData.description,
+                updatedData.dueDate,
+                updatedData.priority,
+                updatedData.notes,
+                updatedData.category,
+                false
+            );
+            todos.push(todo);
+        } else {
+            // Update existing todo
+            Object.assign(todo, updatedData);
         }
+        
+        saveTodosToLocalStorage(todos);
+        resetEditMode(modal);
+        modal.style.display = 'none';
+        
+        const event = new CustomEvent('todosUpdated');
+        document.dispatchEvent(event);
     } catch (error) {
         console.error('Error saving changes:', error);
         alert('Failed to save changes. Please try again.');

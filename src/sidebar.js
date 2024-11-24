@@ -1,5 +1,6 @@
 import { filterTodosByCategory } from './filterTodosByCategory';
 import { filterTodosByTime } from './filterTodosByTime';
+import { showNewTodoModal } from './todoDetails';
 
 export function createSidebar() {
     const sidebar = document.createElement('div');
@@ -97,6 +98,12 @@ export function createSidebar() {
     });
     sidebar.querySelector('.menu-item[data-time="thisMonth"]').addEventListener('click', () => {
         filterTodosByTime('thisMonth');
+    });
+
+    // Add event listener for "Add todo" button
+    const addTodoBtn = sidebar.querySelector('.add-todo-btn');
+    addTodoBtn.addEventListener('click', () => {
+        showNewTodoModal();
     });
 
     return sidebar;
