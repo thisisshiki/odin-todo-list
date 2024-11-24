@@ -88,5 +88,65 @@
     "notes": "Ask about her trip",
     "category": "personal",
     "isCompleted": false
+  },
+  {
+    "id": 10,
+    "title": "Dentist appointment",
+    "description": "Get teeth cleaned",
+    "dueDate": "2024-12-15",
+    "priority": "high",
+    "notes": "Remember to floss",
+    "category": "personal",
+    "isCompleted": false
+  },
+  {
+    "id": 11,
+    "title": "Birthday gift",
+    "description": "Buy a gift for friend's birthday",
+    "dueDate": "2024-11-25",
+    "priority": "medium",
+    "notes": "Check wishlist",
+    "category": "personal",
+    "isCompleted": false
+  },
+  {
+    "id": 12,
+    "title": "Plan vacation",
+    "description": "Research vacation destinations",
+    "dueDate": "2024-12-31",
+    "priority": "low",
+    "notes": "Check budget",
+    "category": "personal",
+    "isCompleted": false
+  },
+  {
+    "id": 13,
+    "title": "Renew passport",
+    "description": "Renew passport for upcoming trip",
+    "dueDate": "2024-11-30",
+    "priority": "high",
+    "notes": "Check renewal process",
+    "category": "personal",
+    "isCompleted": false
+  },
+  {
+    "id": 14,
+    "title": "Pay bills",
+    "description": "Pay monthly bills",
+    "dueDate": "2024-10-01",
+    "priority": "high",
+    "notes": "Check bank balance",
+    "category": "personal",
+    "isCompleted": false
+  },
+  {
+    "id": 15,
+    "title": "Clean house",
+    "description": "Clean and organize house",
+    "dueDate": "2024-09-30",
+    "priority": "medium",
+    "notes": "Start with living room",
+    "category": "personal",
+    "isCompleted": false
   }
 ]

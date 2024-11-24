@@ -1,4 +1,3 @@
-// src/todoDetails.js
 import { loadTodosFromLocalStorage, saveTodosToLocalStorage } from './loadTodos';
 
 export function showTodoDetails(todoId) {

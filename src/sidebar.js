@@ -74,7 +74,7 @@ export function createSidebar() {
 
     // Add event listener for "All Todos"
     sidebar.querySelector('.menu-item.all').addEventListener('click', () => {
-        filterTodosByCategory(null); // 显示所有待办事项
+        filterTodosByCategory(null);
     });
 
     // Add event listeners for category filtering

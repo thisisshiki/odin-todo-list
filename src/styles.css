@@ -19,9 +19,9 @@ body {
   transition: width 0.3s ease;
 }
 
-.sidebar.collapsed {
-  /* width: 100px; */
-}
+/* .sidebar.collapsed {
+  width: 100px;
+} */
 
 .sidebar-header {
   padding: 1rem;
@@ -309,6 +309,6 @@ li input[type="checkbox"] {
 }
 
 /* To be done */
-.add-category, .add-todo-btn {
+.add-category {
   display: none;
 }

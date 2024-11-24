@@ -1,7 +1,9 @@
 import todos from './todos.json';
+import { Todo } from './todo';
 import { format, parseISO } from 'date-fns';
 
 function initializeTodosInLocalStorage() {
+    // localStorage.clear();  
     if (!localStorage.getItem('todos')) {
         localStorage.setItem('todos', JSON.stringify(todos));
     }
@@ -13,7 +15,10 @@ function saveTodosToLocalStorage(todos) {
 
 function loadTodosFromLocalStorage() {
     const savedTodos = localStorage.getItem('todos');
-    return savedTodos ? JSON.parse(savedTodos) : todos;
+    const parsedTodos = savedTodos ? JSON.parse(savedTodos) : todos;
+    return parsedTodos.map(todo => new Todo(
+        todo.id, todo.title, todo.description, todo.dueDate, todo.priority, todo.notes, todo.category, todo.isCompleted
+    ));
 }
 
 export function loadTodos(parentElement) {
@@ -26,7 +31,7 @@ export function loadTodos(parentElement) {
         const li = document.createElement('li');
         li.dataset.todoId = todo.id;
         const formattedDate = format(parseISO(todo.dueDate), 'yyyy-MM-dd');
-        
+
         const dateSpan = document.createElement('span');
         dateSpan.textContent = formattedDate;
         dateSpan.className = 'due-date';
@@ -40,14 +45,12 @@ export function loadTodos(parentElement) {
         }
 
         checkbox.addEventListener('change', () => {
+            todo.toggleComplete();
             if (checkbox.checked) {
                 li.classList.add('completed');
-                todo.isCompleted = true;
             } else {
                 li.classList.remove('completed');
-                todo.isCompleted = false;
             }
-
             saveTodosToLocalStorage(todos);
         });
 
