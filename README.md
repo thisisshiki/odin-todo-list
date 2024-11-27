@@ -5,4 +5,4 @@ Live preview: https://thisisshiki.github.io/odin-todo-list
 
 Description: To do list website, JavaScript, Webpack.
 
-![proj2](https://github.com/user-attachments/assets/d9b880fe-a9cc-47a2-a09a-7408d8fe8018)
+![proj2](https://github.com/user-attachments/assets/aafb1863-41f7-4a16-ada0-c8480931dcd5)
